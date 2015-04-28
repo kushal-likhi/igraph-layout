@@ -55,6 +55,7 @@ int main(int argc, char* argv[]) {
     long int numEl =  igraph_matrix_size(&coords);
     long int numRow =  igraph_matrix_nrow(&coords);
     long int numCol =  igraph_matrix_ncol(&coords);
+    printf("Vertices: %d , Edges: %d\n", igraph_vcount(&g), igraph_ecount(&g));
     printf("Total: %ld | [rows: %ld , cols: %ld]\n", numEl, numRow, numCol);
 
     fprintf(ofile, "[");
