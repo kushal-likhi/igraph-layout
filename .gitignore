@@ -3,4 +3,6 @@
 *.iml
 *.ipr
 
-build
+out/igraph-0.7.1
+
+.tmp
