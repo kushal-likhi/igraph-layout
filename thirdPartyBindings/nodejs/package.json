@@ -1,0 +1,14 @@
+{
+  "name": "igraph-layout-node",
+  "version": "1.0.0",
+  "description": "Node Js module to use this igraph layout bin",
+  "main": "lib/igraphLayout.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "igraph"
+  ],
+  "author": "Kushal Likhi",
+  "license": "ISC"
+}
