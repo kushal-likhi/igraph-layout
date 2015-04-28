@@ -103,3 +103,21 @@ LayoutCalculator.prototype._mergeOutput = function (callback) {
 };
 
 exports.LayoutCalculator = LayoutCalculator;
+
+//Do a self test
+exports.selfTest = function (callback) {
+    var calculator = new LayoutCalculator({
+        nodes: [{id: 1}, {id: 2}, {id: 3}, {id: 4}],
+        links: [{source: 1, target: 2}, {source: 1, target: 3}, {source: 1, target: 2}, {source: 3, target: 0}]
+    });
+    calculator.calculateLayout(function (err, data) {
+        if (err) return callback(err, false);
+        if (
+            data &&
+            data.nodes && data.nodes.length == 4 &&
+            data.links && data.links.length == 4 &&
+            typeof data.nodes[0].x == 'number' && typeof data.nodes[0].y == 'number'
+        ) return callback(null, true);
+        else return callback(new Error('Not able to populate the layouts'), false);
+    });
+};

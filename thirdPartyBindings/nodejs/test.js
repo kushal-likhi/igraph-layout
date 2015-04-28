@@ -1,5 +1,8 @@
 var lib = require('./');
 
+lib.selfTest(function (err, passed) {
+    console.log(err, passed);
+});
 
 var ts = +new Date();
 
