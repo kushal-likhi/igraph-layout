@@ -1,8 +1,8 @@
-const MAX_NODES = 1000;
+const MAX_NODES = 5000;
 const CONNECTIONS_PER_NODE_MAX = 1000;
 const FILE_NAME = 'generated.txt';
-
-var ws = require('fs').createWriteStream(FILE_NAME);
+var fs = require('fs');
+var fd = fs.openSync(FILE_NAME, 'w');
 
 for (var i = 0; i < MAX_NODES; i++) {
     var numConnections = ~~(Math.random() * CONNECTIONS_PER_NODE_MAX);
@@ -12,11 +12,9 @@ for (var i = 0; i < MAX_NODES; i++) {
         var friend = ~~(Math.random() * MAX_NODES);
         if (!connected[friend]) {
             connected[friend] = true;
-            ws.write("" + i + " " + friend + '\n');
+            fs.writeSync(fd, "" + i + " " + friend + '\n');
         }
     }
 }
 
-setInterval(function(){
-    console.log(ws.bytesWritten);
-}, 1000);
+fs.closeSync(fd);
